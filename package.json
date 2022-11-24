@@ -1,15 +1,26 @@
 {
   "name": "dom-open-sourcecode",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile" : "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "Vue",
+    "Webpack",
+    "utils"
+  ],
   "author": "Eric Guo <ghkagg@outlook.com>",
   "license": "MIT",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.45"
+  },
   "devDependencies": {
+    "@types/node": "^18.11.9",
     "typescript": "^4.9.3"
+  },
+  "peerDependencies": {
+    "vue": ">=2 <3"
   }
 }
