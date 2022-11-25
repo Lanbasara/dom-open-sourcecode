@@ -27,7 +27,7 @@ function openSourceCode(e, config) {
     });
   }
 }
-export function ClientInit(config: string) {
+function ClientInit(config: string) {
   const params = JSON.parse(config);
   const {
     domAttribute = "data-source-code-location",
