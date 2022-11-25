@@ -1,6 +1,6 @@
 import { parse } from "@vue/compiler-sfc";
 import { getOptions } from 'loader-utils';
-function getInjectContent(ast, source, filePath, domAttribute="data-source-code-location") {
+function getInjectContent(ast, source, filePath, domAttribute) {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
