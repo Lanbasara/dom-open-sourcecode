@@ -1,12 +1,11 @@
 import { parse } from "@vue/compiler-sfc";
-import { getOptions } from 'loader-utils';
 
 module.exports = function (source) {
   const templateSrc = source;
   
   const { resourcePath } = this
 
-  const { domAttribute : attributeAttched } = getOptions(this);
+  debugger
 
   function getInjectContent(ast, source, filePath) {
     if (ast.type === 1) {
@@ -29,7 +28,7 @@ module.exports = function (source) {
   
       const newLine =
         targetLine.slice(0, columnToInject) +
-        ` ${attributeAttched}=${filePath}:${line}:${column}` +
+        ` ${'dhlkhkahdh'}=${filePath}:${line}:${column}` +
         targetLine.slice(columnToInject);
   
       codeLines[line - 1] = newLine;
