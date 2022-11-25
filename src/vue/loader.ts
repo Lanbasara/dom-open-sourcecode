@@ -1,11 +1,12 @@
 import { parse } from "@vue/compiler-sfc";
 import { getOptions } from 'loader-utils';
-function getInjectContent(ast, source, filePath, attributeAttched) {
+const attributeAttched = 'kjhkjfhlajhhfa'
+function getInjectContent(ast, source, filePath) {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
         const node = ast.children[i];
-        source = getInjectContent(node, source, filePath,attributeAttched);
+        source = getInjectContent(node, source, filePath);
       }
     }
     const codeLines = source.split("\n");
@@ -56,8 +57,7 @@ module.exports = function (source) {
     const newSourceCode = getInjectContent(
       domAst,
       templateSourceCode,
-      resourcePath,
-      'dasdadaddadads'
+      resourcePath
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;
