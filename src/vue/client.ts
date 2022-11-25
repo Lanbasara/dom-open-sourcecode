@@ -14,7 +14,6 @@ function openSourceCode(e, config) {
   console.log('openSourceCode called e is',e)
   const { domAttribute, urlPath, devServerPort } = config;
   if (e.altKey) {
-    debugger
     e.preventDefault();
     e.stopPropagation();
     let targetTag = e.target;

@@ -1,5 +1,5 @@
 import { parse } from "@vue/compiler-sfc";
-function getInjectContent(ast, source, filePath) {
+function getInjectContent(ast, source, filePath, domAttribute="data-source-code-location") {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
@@ -19,7 +19,7 @@ function getInjectContent(ast, source, filePath) {
 
     const newLine =
       targetLine.slice(0, columnToInject) +
-      ` data-source-code-location=${filePath}:${line}:${column}` +
+      ` ${domAttribute}=${filePath}:${line}:${column}` +
       targetLine.slice(columnToInject);
 
     codeLines[line - 1] = newLine;
@@ -32,8 +32,10 @@ function getInjectContent(ast, source, filePath) {
 
 module.exports = function (source) {
   const templateSrc = source;
-
+  
   const { resourcePath } = this;
+
+  const options = this.getOptions();
 
   const vueFileContent = parse(templateSrc);
   if (
@@ -49,7 +51,8 @@ module.exports = function (source) {
     const newSourceCode = getInjectContent(
       domAst,
       templateSourceCode,
-      resourcePath
+      resourcePath,
+      options?.domAttribute || "data-source-code-location"
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;

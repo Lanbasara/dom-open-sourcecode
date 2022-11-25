@@ -19,7 +19,6 @@ class DOSVue implements DOSConfig {
     config.urlPath && (this.port = config.urlPath)
     this.serverConfig = createServerConfig(this.urlPath)
     this.loader = path.resolve(__dirname,"./loader")
-    console.log('this.loder is', path.resolve(__dirname,"./loader"))
     DOSVue.hasInstance = true
   }
 }
