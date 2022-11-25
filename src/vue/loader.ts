@@ -1,6 +1,6 @@
 import { parse } from "@vue/compiler-sfc";
 import { getOptions } from 'loader-utils';
-function getInjectContent(ast, source, filePath, domAttribute) {
+function getInjectContent(ast, source, filePath, domAttribute='dsadadadada') {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
@@ -57,7 +57,6 @@ module.exports = function (source) {
       domAst,
       templateSourceCode,
       resourcePath,
-      options.domAttribute
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;
