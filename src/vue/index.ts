@@ -17,8 +17,8 @@ class DOSVue implements DOSConfig {
     console.log('DOSVue config is',config)
     debugger
     config.port && (this.port = config.port)
-    config.domAttribute && (this.port = config.domAttribute)
-    config.urlPath && (this.port = config.urlPath)
+    config.domAttribute && (this.domAttribute = config.domAttribute)
+    config.urlPath && (this.urlPath = config.urlPath)
     this.serverConfig = createServerConfig(this.urlPath)
     this.loader = path.resolve(__dirname,"./loader")
     DOSVue.hasInstance = true
