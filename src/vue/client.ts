@@ -1,9 +1,3 @@
-import {
-  DEFAULT_DOS_DOM_ATTRIBUTE,
-  DEFAULT_DOS_PORT,
-  DEFAULT_DOS_URL_PATH,
-} from "./const";
-
 function launchEditor(
   filePath,
   config : {
@@ -12,7 +6,7 @@ function launchEditor(
   }
 ) {
   if (!filePath) return;
-  const {urlPath = DEFAULT_DOS_URL_PATH,devServerPort =DEFAULT_DOS_PORT } = config
+  const {urlPath,devServerPort  } = config
   fetch(`https://localhost:${devServerPort}${urlPath}?filePath=-g ${filePath}`)
 }
 
@@ -40,9 +34,9 @@ function ClientInit(
     urlPath?: string;
     devServerPort?:string;
   } = {
-    attribute: DEFAULT_DOS_DOM_ATTRIBUTE,
-    urlPath: DEFAULT_DOS_URL_PATH,
-    devServerPort: DEFAULT_DOS_PORT
+    attribute: "data-source-code-location",
+    urlPath: "/code",
+    devServerPort: "8090"
   }
 ) {
   document.addEventListener(
