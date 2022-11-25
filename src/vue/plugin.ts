@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from 'path'
-// import ClientInit from './client'
 import { DEFAULT_INIT_CONFIG } from "./const";
 import { DOSConfig } from "./type";
 class DOSVueInsertScriptPlugin {
