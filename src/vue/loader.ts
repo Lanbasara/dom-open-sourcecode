@@ -33,11 +33,8 @@ function getInjectContent(ast, source, filePath, domAttribute="data-source-code-
 module.exports = function (source) {
   const templateSrc = source;
   
-  const { resourcePath } = this;
+  const { resourcePath, options } = this;
 
-  const options = this.getOptions();
-
-  console.log('loader options is',options)
 
   const vueFileContent = parse(templateSrc);
   if (
