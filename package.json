@@ -4,8 +4,8 @@
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
-    "compile": "tsc",
-    "update:version:beta": "node ./src/scripts/publish"
+    "compile": "tsc && babel ts-dist --out-dir dist",
+    "update:version": "node ./src/scripts/publish"
   },
   "keywords": [
     "Vue",
@@ -19,8 +19,13 @@
     "loader-utils": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
     "@types/node": "^18.11.9",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "chalk": "^5.1.2",
+    "install": "^0.13.0",
+    "nstall": "^0.2.0",
     "shelljs": "^0.8.5",
     "typescript": "^4.9.3"
   },

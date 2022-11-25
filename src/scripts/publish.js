@@ -6,11 +6,8 @@ console.log('2. compiling....');
 
 exec('npm run compile')
 
-exec('git add .')
-exec('git commit --amend --no-edit')
-
-exec('npm version patch')
+exec('npm version minor')
 
 console.log('3. publishing...');
 
-exec('npm publish --tag beta');
+exec('npm publish');

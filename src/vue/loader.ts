@@ -1,11 +1,13 @@
 import { parse } from "@vue/compiler-sfc";
-
+import DOSVueInsertScriptPlugin from './plugin'
 module.exports = function (source) {
   const templateSrc = source;
   
   const { resourcePath } = this
 
-  debugger
+  const DOSPlugin =  this._compiler.options.plugins.find(item => item instanceof DOSVueInsertScriptPlugin)
+  
+  const customAttr = DOSPlugin.options.domAttribute
 
   function getInjectContent(ast, source, filePath) {
     if (ast.type === 1) {
@@ -28,7 +30,7 @@ module.exports = function (source) {
   
       const newLine =
         targetLine.slice(0, columnToInject) +
-        ` ${'dhlkhkahdh'}=${filePath}:${line}:${column}` +
+        ` ${customAttr}=${filePath}:${line}:${column}` +
         targetLine.slice(columnToInject);
   
       codeLines[line - 1] = newLine;
