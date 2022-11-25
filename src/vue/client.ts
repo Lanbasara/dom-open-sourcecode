@@ -42,7 +42,7 @@ function ClientInit(config: {
     urlPath = "/code",
     devServerPort = "8090",
   } = config;
-  console.log('ClientInit clicked','document is',document)
+  console.log('ClientInit clicked','config is',config)
   document.addEventListener(
     "click",
     (e) => {

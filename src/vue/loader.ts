@@ -18,6 +18,8 @@ function getInjectContent(ast, source, filePath, domAttribute="data-source-code-
 
     const targetLine = codeLines[line - 1];
 
+    console.log('getInjectContent domAttribute is',domAttribute)
+
     const newLine =
       targetLine.slice(0, columnToInject) +
       ` ${domAttribute}=${filePath}:${line}:${column}` +
@@ -38,8 +40,7 @@ module.exports = function (source) {
 
   const options = getOptions(this);
 
-  debugger
-
+  console.log('loader options is',options)
 
   const vueFileContent = parse(templateSrc);
   if (
