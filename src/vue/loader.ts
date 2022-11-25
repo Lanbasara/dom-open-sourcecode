@@ -40,7 +40,7 @@ module.exports = function (source) {
 
   const options = getOptions(this);
 
-  console.log('loader options is',options)
+  console.log('loader options is', options.domAttribute)
 
   const vueFileContent = parse(templateSrc);
   if (
@@ -57,7 +57,7 @@ module.exports = function (source) {
       domAst,
       templateSourceCode,
       resourcePath,
-      options?.domAttribute || "data-source-code-location"
+      options.domAttribute
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;
