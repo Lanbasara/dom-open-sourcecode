@@ -27,14 +27,16 @@ function openSourceCode(e, config) {
     });
   }
 }
-function ClientInit(config: string) {
-  console.log('ClientInit config is',config)
-  const params = JSON.parse(config);
+function ClientInit(config: {
+  domAttribute? : string;
+  urlPath? : string;
+  devServerPort? : string;
+}) {
   const {
     domAttribute = "data-source-code-location",
     urlPath = "/code",
     devServerPort = "8090",
-  } = params;
+  } = config;
   document.addEventListener(
     "click",
     (e) => {
