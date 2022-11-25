@@ -1,11 +1,11 @@
 import { parse } from "@vue/compiler-sfc";
 import { getOptions } from 'loader-utils';
-function getInjectContent(ast, source, filePath, domAttribute='dsadadadada') {
+function getInjectContent(ast, source, filePath, attributeAttched) {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
         const node = ast.children[i];
-        source = getInjectContent(node, source, filePath,domAttribute);
+        source = getInjectContent(node, source, filePath,attributeAttched);
       }
     }
     const codeLines = source.split("\n");
@@ -18,11 +18,10 @@ function getInjectContent(ast, source, filePath, domAttribute='dsadadadada') {
 
     const targetLine = codeLines[line - 1];
 
-    console.log('getInjectContent domAttribute is',domAttribute)
 
     const newLine =
       targetLine.slice(0, columnToInject) +
-      ` ${domAttribute}=${filePath}:${line}:${column}` +
+      ` ${attributeAttched}=${filePath}:${line}:${column}` +
       targetLine.slice(columnToInject);
 
     codeLines[line - 1] = newLine;
@@ -38,9 +37,8 @@ module.exports = function (source) {
   
   const { resourcePath } = this
 
-  const options = getOptions(this);
+  const { domAttribute : attributeAttched } = getOptions(this);
 
-  console.log('loader options is', options.domAttribute)
 
   const vueFileContent = parse(templateSrc);
   if (
@@ -53,10 +51,13 @@ module.exports = function (source) {
 
     const templateSourceCode = domAst.loc.source;
 
+
+
     const newSourceCode = getInjectContent(
       domAst,
       templateSourceCode,
       resourcePath,
+      attributeAttched
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;
