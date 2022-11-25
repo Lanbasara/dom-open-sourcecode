@@ -11,6 +11,7 @@ function launchEditor(
 }
 
 function openSourceCode(e, config) {
+  console.log('openSourceCode called e is',e)
   const { domAttribute, urlPath, devServerPort } = config;
   if (e.altKey) {
     e.preventDefault();
@@ -37,9 +38,11 @@ function ClientInit(config: {
     urlPath = "/code",
     devServerPort = "8090",
   } = config;
+  console.log('ClientInit clicked','document is',document)
   document.addEventListener(
     "click",
     (e) => {
+      console.log('document click')
       openSourceCode(e, {
         domAttribute,
         urlPath,
