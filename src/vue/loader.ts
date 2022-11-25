@@ -35,6 +35,8 @@ module.exports = function (source) {
   
   const { resourcePath, options } = this;
 
+  debugger
+
 
   const vueFileContent = parse(templateSrc);
   if (
