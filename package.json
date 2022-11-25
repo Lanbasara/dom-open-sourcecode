@@ -1,6 +1,6 @@
 {
   "name": "dom-open-sourcecode",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@vue/compiler-sfc": "^3.2.45",
-    "loader-utils": "^3.2.1"
+    "loader-utils": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
