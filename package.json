@@ -19,8 +19,8 @@
     "loader-utils": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
+    "@babel/cli": "^7.19.3",
     "@types/node": "^18.11.9",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "chalk": "^5.1.2",
