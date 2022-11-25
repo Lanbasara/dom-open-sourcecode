@@ -1,5 +1,4 @@
 import { DEFAULT_DOS_URL_PATH } from "./const";
-
 function createServerConfig(path=DEFAULT_DOS_URL_PATH){
   return {
     before: function (app) {

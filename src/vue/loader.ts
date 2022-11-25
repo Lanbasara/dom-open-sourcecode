@@ -1,4 +1,5 @@
 import { parse } from "@vue/compiler-sfc";
+import { getOptions } from 'loader-utils';
 function getInjectContent(ast, source, filePath, domAttribute="data-source-code-location") {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
@@ -33,7 +34,9 @@ function getInjectContent(ast, source, filePath, domAttribute="data-source-code-
 module.exports = function (source) {
   const templateSrc = source;
   
-  const { resourcePath, options } = this;
+  const { resourcePath } = this
+
+  const options = getOptions(this);
 
   debugger
 

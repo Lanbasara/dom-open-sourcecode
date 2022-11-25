@@ -14,8 +14,6 @@ class DOSVue implements DOSConfig {
   loader;
   constructor(config?:Partial<DOSConfig>){
     if(DOSVue.hasInstance) throw 'There is already an instance'
-    console.log('DOSVue config is',config)
-    debugger
     config.port && (this.port = config.port)
     config.domAttribute && (this.domAttribute = config.domAttribute)
     config.urlPath && (this.urlPath = config.urlPath)
