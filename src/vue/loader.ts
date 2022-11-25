@@ -22,7 +22,7 @@ function getInjectContent(ast, source, filePath, domAttribute) {
 
     const newLine =
       targetLine.slice(0, columnToInject) +
-      ` ${domAttribute}=${filePath}:${line}:${column}` +
+      ` dasdadadadadad=${filePath}:${line}:${column}` +
       targetLine.slice(columnToInject);
 
     codeLines[line - 1] = newLine;
