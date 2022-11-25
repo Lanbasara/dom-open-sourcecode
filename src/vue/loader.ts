@@ -37,6 +37,8 @@ module.exports = function (source) {
 
   const options = this.getOptions();
 
+  console.log('loader options is',options)
+
   const vueFileContent = parse(templateSrc);
   if (
     vueFileContent &&
