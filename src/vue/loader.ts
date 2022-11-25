@@ -7,7 +7,7 @@ module.exports = function (source) {
 
   const DOSPlugin =  this._compiler.options.plugins.find(item => item instanceof DOSVueInsertScriptPlugin)
   
-  const customAttr = DOSPlugin.options.domAttribute
+  const customAttr = DOSPlugin.options.domAttribute || 'data-source-code-location'
 
   function getInjectContent(ast, source, filePath) {
     if (ast.type === 1) {
