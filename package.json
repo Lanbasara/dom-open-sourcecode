@@ -1,11 +1,11 @@
 {
   "name": "dom-open-sourcecode",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
     "compile": "tsc",
-    "update:version:beta" : "node ./src/scripts/publish"
+    "update:version:beta": "node ./src/scripts/publish"
   },
   "keywords": [
     "Vue",
