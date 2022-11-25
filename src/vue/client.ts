@@ -47,5 +47,4 @@ export function ClientInit(config: string) {
   );
 }
 
-ClientInit();
 console.log("This is client");

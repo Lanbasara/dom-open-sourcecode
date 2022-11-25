@@ -16,7 +16,7 @@ class DOSVueInsertScriptPlugin {
     };
   }) {
     const code = fs.readFileSync(path.resolve(__dirname,'./client.js'));
-    const scriptCode = `<script>${code}</script>`;
+    const scriptCode = `<script>${code}</script><script>ClientInit(${JSON.stringify(this.options)})</script>`;
 
     compiler.hooks.compilation.tap(
       "compilation",
