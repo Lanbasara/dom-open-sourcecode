@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from 'path'
-import ClientInit from './client'
+// import ClientInit from './client'
 import { DEFAULT_INIT_CONFIG } from "./const";
 import { DOSConfig } from "./type";
 class DOSVueInsertScriptPlugin {
@@ -16,8 +16,8 @@ class DOSVueInsertScriptPlugin {
       };
     };
   }) {
-    const code = fs.readFileSync(path.resolve(__dirname,'./client.ts'));
-    const scriptCode = `<script>${code}</script>\n<script>${ClientInit(this.options)}</script>`;
+    const code = fs.readFileSync(path.resolve(__dirname,'./client.js'));
+    const scriptCode = `<script>${code}</script>`;
 
     compiler.hooks.compilation.tap(
       "compilation",

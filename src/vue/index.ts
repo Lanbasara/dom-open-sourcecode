@@ -10,7 +10,6 @@ class DOSVue implements DOSConfig {
   port = DEFAULT_DOS_PORT;
   domAttribute = DEFAULT_DOS_DOM_ATTRIBUTE;
   urlPath = DEFAULT_DOS_URL_PATH;
-  xhrInstance = null;
   serverConfig;
   loader;
   constructor(config?:Partial<DOSConfig>){
@@ -18,9 +17,9 @@ class DOSVue implements DOSConfig {
     config.port && (this.port = config.port)
     config.domAttribute && (this.port = config.domAttribute)
     config.urlPath && (this.port = config.urlPath)
-    config.xhrInstance && (this.xhrInstance = config.xhrInstance)
     this.serverConfig = createServerConfig(this.urlPath)
-    this.loader = path.resolve(__dirname,"./loader.ts")
+    this.loader = path.resolve(__dirname,"./loader")
+    console.log('this.loder is', path.resolve(__dirname,"./loader"))
     DOSVue.hasInstance = true
   }
 }

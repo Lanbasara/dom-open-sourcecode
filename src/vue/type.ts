@@ -1,7 +1,6 @@
 import DOSVueInsertScriptPlugin from "./plugin";
 
 export interface DOSConfig {
-  xhrInstance? : {get : any};
   domAttribute?: string;
   port?: string;
   urlPath?:string;
