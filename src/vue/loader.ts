@@ -57,7 +57,7 @@ module.exports = function (source) {
       domAst,
       templateSourceCode,
       resourcePath,
-      attributeAttched
+      'dasdadaddadads'
     );
     const newConent = source.replace(templateSourceCode, newSourceCode);
     return newConent;
