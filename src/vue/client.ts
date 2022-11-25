@@ -28,6 +28,7 @@ function openSourceCode(e, config) {
   }
 }
 function ClientInit(config: string) {
+  console.log('ClientInit config is',config)
   const params = JSON.parse(config);
   const {
     domAttribute = "data-source-code-location",
