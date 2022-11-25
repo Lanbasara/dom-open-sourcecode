@@ -1,6 +1,5 @@
 import { parse } from "@vue/compiler-sfc";
 import { getOptions } from 'loader-utils';
-const attributeAttched = 'kjhkjfhlajhhfa'
 function getInjectContent(ast, source, filePath) {
   if (ast.type === 1) {
     if (ast.children && ast.children.length) {
