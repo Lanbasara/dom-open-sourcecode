@@ -5,7 +5,7 @@ function getInjectContent(ast, source, filePath, domAttribute="data-source-code-
     if (ast.children && ast.children.length) {
       for (let i = ast.children.length - 1; i >= 0; i--) {
         const node = ast.children[i];
-        source = getInjectContent(node, source, filePath);
+        source = getInjectContent(node, source, filePath,domAttribute);
       }
     }
     const codeLines = source.split("\n");
