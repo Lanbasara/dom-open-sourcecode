@@ -11,21 +11,25 @@ function launchEditor(
 }
 
 function openSourceCode(e, config) {
-  console.log('openSourceCode called e is',e)
-  const { domAttribute, urlPath, devServerPort } = config;
-  if (e.altKey) {
-    e.preventDefault();
-    e.stopPropagation();
-    let targetTag = e.target;
-    if (!targetTag.hasAttribute(`${domAttribute}`)) {
-      targetTag = e.target.closest(`*[${domAttribute}]`);
+  try {
+    console.log('openSourceCode called e is',e)
+    const { domAttribute, urlPath, devServerPort } = config;
+    if (e.altKey) {
+      e.preventDefault();
+      e.stopPropagation();
+      let targetTag = e.target;
+      if (!targetTag.hasAttribute(`${domAttribute}`)) {
+        targetTag = e.target.closest(`*[${domAttribute}]`);
+      }
+      const filePath =
+        (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
+      launchEditor(filePath, {
+        urlPath,
+        devServerPort,
+      });
     }
-    const filePath =
-      (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
-    launchEditor(filePath, {
-      urlPath,
-      devServerPort,
-    });
+  } catch(e){
+    console.error('DOSVue error in openSourceCode',e)
   }
 }
 function ClientInit(config: {
