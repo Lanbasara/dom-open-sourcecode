@@ -3,17 +3,18 @@ function launchEditor(
   config: {
     urlPath: string;
     devServerPort: string;
+    host :string
   }
 ) {
   if (!filePath) return;
-  const { urlPath, devServerPort } = config;
-  fetch(`https://localhost:${devServerPort}${urlPath}?filePath=-g ${filePath}`);
+  const { urlPath, devServerPort,host } = config;
+  fetch(`https://${host}:${devServerPort}${urlPath}?filePath=-g ${filePath}`);
 }
 
 function openSourceCode(e, config) {
   try {
     console.log('openSourceCode called e is',e)
-    const { domAttribute, urlPath, devServerPort } = config;
+    const { domAttribute, urlPath, devServerPort,host } = config;
     if (e.altKey) {
       e.preventDefault();
       e.stopPropagation();
@@ -26,6 +27,7 @@ function openSourceCode(e, config) {
       launchEditor(filePath, {
         urlPath,
         devServerPort,
+        host
       });
     }
   } catch(e){
@@ -36,11 +38,13 @@ function ClientInit(config: {
   domAttribute? : string;
   urlPath? : string;
   devServerPort? : string;
+  host?:string
 }) {
   const {
     domAttribute = "data-source-code-location",
     urlPath = "/code",
     devServerPort = "8090",
+    host = "https//localhost"
   } = config;
   console.log('ClientInit clicked','config is',config)
   document.addEventListener(
@@ -50,7 +54,8 @@ function ClientInit(config: {
       openSourceCode(e, {
         domAttribute,
         urlPath,
-        devServerPort
+        devServerPort,
+        host
       });
     },
     { capture: true }
