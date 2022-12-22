@@ -4,6 +4,7 @@ export interface DOSConfig {
   domAttribute?: string;
   port?: string;
   urlPath?:string;
+  host?:string;
 }
 
 export interface DOSInstance extends DOSConfig  {
