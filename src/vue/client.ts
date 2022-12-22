@@ -12,23 +12,37 @@ function launchEditor(
 }
 
 function openSourceCode(e, config) {
+  const { domAttribute, urlPath, port,host } = config;
+  function findAllElementsFromTargetToBody(node){
+    const res = []
+    let target = node
+    while(target || target !== window.document.body){
+      if(target.hasAttribute(`${domAttribute}`)){
+        res.push(target)
+        target = target.parentNode
+      }
+    }
+    return res
+  }
+
+
   try {
     console.log('openSourceCode called e is',e)
-    const { domAttribute, urlPath, port,host } = config;
     if (e.altKey) {
       e.preventDefault();
       e.stopPropagation();
       let targetTag = e.target;
-      if (!targetTag.hasAttribute(`${domAttribute}`)) {
-        targetTag = e.target.closest(`*[${domAttribute}]`);
-      }
-      const filePath =
-        (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
-      launchEditor(filePath, {
-        urlPath,
-        port,
-        host
-      });
+      // if (!targetTag.hasAttribute(`${domAttribute}`)) {
+      //   targetTag = e.target.closest(`*[${domAttribute}]`);
+      // }
+      console.log(findAllElementsFromTargetToBody(targetTag))
+      // const filePath =
+      //   (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
+      // launchEditor(filePath, {
+      //   urlPath,
+      //   port,
+      //   host
+      // });
     }
   } catch(e){
     console.error('DOSVue error in openSourceCode',e)
