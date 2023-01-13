@@ -15,8 +15,65 @@ class DOSVueInsertScriptPlugin {
       };
     };
   }) {
-    const code = fs.readFileSync(path.resolve(__dirname,'./client.js'));
-    const scriptCode = `<script>${code}</script><script>ClientInit(${JSON.stringify(this.options)})</script>`;
+    const ClientCode = fs.readFileSync(path.resolve(__dirname,'./client.js'));
+    const scriptCode = `
+    <script>${ClientCode}</script>
+    <script>ClientInit(${JSON.stringify(this.options)})</script>
+    <div id="dos-container">
+  <div id="dos-close"></div>
+</div>
+<style>
+  #dos-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+    width: 300px;
+    height: 300px;
+    z-index: 999999;
+    display: none;
+  }
+  #dos-container.show {
+    display: block;
+  }
+  #dos-close {
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  #dos-close::before,
+  #dos-close::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000;
+  }
+  #dos-close::before {
+    transform: rotate(45deg);
+  }
+  #dos-close::after {
+    transform: rotate(-45deg);
+  }
+</style>
+<script>
+    (function addDosClose(){
+        const dosCloseButton = document.getElementById('dos-close')
+        dosCloseButton.addEventListener('click',() => {
+            const dosContainer = document.getElementById('dos-container')
+            dosContainer.classList.toggle('show')
+        })
+    })()
+</script>
+    `;
 
     compiler.hooks.compilation.tap(
       "compilation",

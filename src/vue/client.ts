@@ -17,19 +17,35 @@ function openSourceCode(e, config) {
       e.preventDefault();
       e.stopPropagation();
       let targetTag = e.target;
-      if (!targetTag.hasAttribute(`${domAttribute}`)) {
-        targetTag = e.target.closest(`*[${domAttribute}]`);
-      }
-      const filePath =
-        (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
-      launchEditor(filePath, {
-        urlPath,
-      });
+      console.log('all parent element is',findAllParentElement(targetTag,domAttribute))
+      const dosContainer = document.getElementById('dos-container')
+      dosContainer.classList.toggle('show')
+      // if (!targetTag.hasAttribute(`${domAttribute}`)) {
+      //   targetTag = e.target.closest(`*[${domAttribute}]`);
+      // }
+      // const filePath =
+      //   (targetTag && targetTag.getAttribute(`${domAttribute}`)) || "";
+      // launchEditor(filePath, {
+      //   urlPath,
+      // });
     }
   } catch(e){
     console.error('DOSVue error in openSourceCode',e)
   }
 }
+
+function findAllParentElement(node,domAttribute){
+  const res = []
+  while(node && node.parentElement){
+    if(node === document.body) return res
+    if(node.hasAttribute(domAttribute)){
+      res.push(node)
+    }
+    node = node.parentElement
+  }
+  return res
+}
+
 function ClientInit(config: {
   domAttribute? : string;
   urlPath? : string;
@@ -50,6 +66,7 @@ function ClientInit(config: {
     },
     { capture: true }
   );
+  
 }
 
 console.log("This is client");
