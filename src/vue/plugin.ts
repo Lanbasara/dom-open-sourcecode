@@ -21,15 +21,19 @@ class DOSVueInsertScriptPlugin {
     <script>ClientInit(${JSON.stringify(this.options)})</script>
     <div id="dos-container">
   <div id="dos-close"></div>
+  <div id="dos-content"></div>
 </div>
 <style>
+  .dos-selected-item {
+    border : 1px solid blue;
+  }
   #dos-container {
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: red;
-    width: 300px;
-    height: 300px;
+    max-width : 80%;
+    min-width : 80%;
+    background-color: #f9f1db;
     z-index: 999999;
     display: none;
   }
@@ -69,6 +73,8 @@ class DOSVueInsertScriptPlugin {
         const dosCloseButton = document.getElementById('dos-close')
         dosCloseButton.addEventListener('click',() => {
             const dosContainer = document.getElementById('dos-container')
+            const dosContent = document.getElementById('dos-content')
+            dosContent.innerHTML = ''
             dosContainer.classList.toggle('show')
         })
     })()

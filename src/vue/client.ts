@@ -9,6 +9,33 @@ function launchEditor(
   fetch(`${window.location.origin}${urlPath}?filePath=-g ${filePath}`);
 }
 
+
+function createLinkForElement(nodeList,urlPath){
+  const tabFragment = document.createDocumentFragment()
+  for(let i=0;i<nodeList.length;i++){
+    let li = document.createElement('div')
+    li.style.margin = '8px'
+    li.innerHTML = `<span style='cursor: pointer;text-decoration: underline;color: #0000ff;'>${nodeList[i].filePath}</span>`
+    li.addEventListener("mouseenter",() => {
+      // console.log('nodeList[i] is',nodeList[i])
+      nodeList[i].node.classList.add("dos-selected-item")
+    })
+    li.addEventListener("mouseleave",() => {
+      // console.log('nodeList[i] is',nodeList[i])
+      nodeList[i].node.classList.remove("dos-selected-item")
+    })
+    li.addEventListener("click",() => {
+      // console.log('nodeList[i] is',nodeList[i])
+      launchEditor(nodeList[i].filePath, {
+        urlPath,
+      });
+    })
+
+    tabFragment.appendChild(li)
+  }
+  return tabFragment
+}
+
 function openSourceCode(e, config) {
   try {
     console.log('openSourceCode called e is',e)
@@ -17,8 +44,9 @@ function openSourceCode(e, config) {
       e.preventDefault();
       e.stopPropagation();
       let targetTag = e.target;
-      console.log('all parent element is',findAllParentElement(targetTag,domAttribute))
       const dosContainer = document.getElementById('dos-container')
+      const dosContent = document.getElementById('dos-content')
+      dosContent.appendChild(createLinkForElement(findAllParentElement(targetTag,domAttribute),urlPath))
       dosContainer.classList.toggle('show')
       // if (!targetTag.hasAttribute(`${domAttribute}`)) {
       //   targetTag = e.target.closest(`*[${domAttribute}]`);
@@ -39,7 +67,10 @@ function findAllParentElement(node,domAttribute){
   while(node && node.parentElement){
     if(node === document.body) return res
     if(node.hasAttribute(domAttribute)){
-      res.push(node)
+      res.push({
+        node,
+        filePath : node.getAttribute(domAttribute)
+      })
     }
     node = node.parentElement
   }
