@@ -1,11 +1,8 @@
 const { DOSVue, DOSVueInsertScriptPlugin } = require('../../dist/vue')
-const DosVueConfig = {
-    port : '3000'
-}
-const dosVue = new DOSVue(DosVueConfig)
+const dosVue = new DOSVue()
 module.exports = {
     devServer : {
-        port : 3000,
+        port : 3235,
         ...dosVue.serverConfig
     },
     chainWebpack : (config) => {
@@ -16,6 +13,6 @@ module.exports = {
         .end();
     },
     configureWebpack : {
-        plugins: [new DOSVueInsertScriptPlugin(DosVueConfig)]
+        plugins: [new DOSVueInsertScriptPlugin()]
     }
 }
