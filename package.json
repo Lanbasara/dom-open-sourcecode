@@ -4,7 +4,7 @@
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
-    "compile": "tsc && babel ts-dist --out-dir dist",
+    "compile": "tsc",
     "update:version": "node ./scripts/publish"
   },
   "keywords": [
