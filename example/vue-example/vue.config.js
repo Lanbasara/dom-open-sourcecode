@@ -1,4 +1,4 @@
-const { DOSVue, DOSVueInsertScriptPlugin } = require('../../dist/vue')
+const { DOSVue, DOSVueInsertScriptPlugin } = require('../../dist')
 const dosVue = new DOSVue()
 module.exports = {
     devServer : {
