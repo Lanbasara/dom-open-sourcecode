@@ -47,8 +47,7 @@ inquirer.prompt(questions).then((ans) => {
 
     console.log("tag version is", `v${version}`);
 
-    console.log('Start push tag')
-
+    
     exec(`git push origin v${version}`);
     
     console.log('Finish git tag create and publish')
