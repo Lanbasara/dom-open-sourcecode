@@ -1,10 +1,9 @@
 {
   "name": "dom-open-sourcecode",
-  "version": "0.20.0-0",
+  "version": "0.21.0-0",
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
-    "test": "node ./scripts/test.js",
     "build": "tsc",
     "update": "node ./scripts/publish"
   },
