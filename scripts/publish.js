@@ -18,6 +18,4 @@ const version = require("../package.json").version;
 
 console.log("tag version is", `v${version}`);
 
-exec(`git tag v${version}`);
-
 exec(`git push origin v${version}`);
