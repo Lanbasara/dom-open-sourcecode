@@ -6,7 +6,7 @@ console.log("1. start publish new version");
 
 console.log("2. compiling....");
 
-exec("npm run compile");
+exec("npm run build");
 
 exec(`npm version ${versionTitle}`);
 
