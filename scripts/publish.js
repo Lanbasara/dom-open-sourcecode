@@ -1,13 +1,23 @@
-const { exec} = require('shelljs');
+const { exec, env } = require("shelljs");
 
-console.log('1. start publish new version');
+const versionTitle = process.argv.slice(2)[0].match(/--(\w+)/)[1];
 
-console.log('2. compiling....');
+console.log("1. start publish new version");
 
-exec('npm run compile')
+console.log("2. compiling....");
 
-exec('npm version minor')
+exec("npm run compile");
 
-console.log('3. publishing...');
+exec(`npm version ${versionTitle}`);
 
-exec('npm publish');
+console.log("3. publishing...");
+
+exec("npm publish");
+
+const npm_package_version = env["npm_package_version"];
+
+console.log(`version tag is ${npm_package_version}`);
+
+console.log("4. git tag");
+
+exec(`git tag v${npm_package_version}`);
