@@ -1,6 +1,6 @@
 {
   "name": "dom-open-sourcecode",
-  "version": "0.11.0-0",
+  "version": "0.12.0-0",
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "update:minor": "node ./scripts/publish --minor",
     "update:patch": "node ./scripts/publish --patch",
     "update:premajor": "node ./scripts/publish --premajor",
-    "update:preminor": "node ./scripts/publish --preminor"
+    "update:preminor": "node ./scripts/publish --preminor",
+    "postupdate:preminor": "node ./scripts/git-tag"
   },
   "keywords": [
     "Vue",
