@@ -33,7 +33,7 @@ class DOSVueInsertScriptPlugin {
     left: 0;
     max-width : 80%;
     min-width : 80%;
-    background-color: #f9f1db;
+    background-color: rgb(249, 241, 219,0.7);
     z-index: 999999;
     display: none;
   }
