@@ -24,7 +24,7 @@ Only need to config in vue.config.js
 const {
   DOSVue,
   DOSVueInsertScriptPlugin,
-} = require("dom-open-sourcecode/dist/vue");
+} = require("dom-open-sourcecode");
 
 const DOSVueConfig: {
   // The port of your devServer you have launched
