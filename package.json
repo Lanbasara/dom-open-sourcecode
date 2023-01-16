@@ -4,12 +4,9 @@
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
+    "test": "node ./scripts/test.js",
     "build": "tsc",
-    "update:major": "node ./scripts/publish --major",
-    "update:minor": "node ./scripts/publish --minor",
-    "update:patch": "node ./scripts/publish --patch",
-    "update:premajor": "node ./scripts/publish --premajor",
-    "update:preminor": "node ./scripts/publish --preminor"
+    "update" : "node ./scripts/publish"
   },
   "keywords": [
     "Vue",
@@ -27,6 +24,7 @@
     "@babel/core": "^7.20.2",
     "@types/node": "^18.11.9",
     "chalk": "^5.1.2",
+    "inquirer": "^8.0.0",
     "install": "^0.13.0",
     "nstall": "^0.2.0",
     "shelljs": "^0.8.5",

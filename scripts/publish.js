@@ -1,21 +1,54 @@
+const inquirer = require("inquirer");
 const { exec } = require("shelljs");
 
-const versionTitle = process.argv.slice(2)[0].match(/--(\w+)/)[1];
+const PUBLISH_TYPE = [
+  { name: "preminor", value: "preminor" },
+  { name: "premajor", value: "premajor" },
+  { name: "patch", value: "patch" },
+  { name: "minor", value: "minor" },
+  { name: "major", value: "major" },
+];
 
-console.log("1. start publish new version");
+const questions = [
+  {
+    type: "list",
+    name: "publish_type",
+    message: "Choose publish type",
+    default: "patch",
+    choices: PUBLISH_TYPE,
+  },
+  {
+    type: "confirm",
+    name: "git_tag",
+    message: "Create a git tag?",
+    default: false,
+  },
+];
 
-console.log("2. compiling....");
+inquirer.prompt(questions).then((ans) => {
+  const type = ans["publish_type"];
 
-exec("npm run build");
+  const isGitTag = ans["git_tag"];
 
-exec(`npm version ${versionTitle}`);
+  console.log("1. start publish new version");
 
-console.log("3. publishing...");
+  console.log("2. compiling....");
 
-exec("npm publish");
+  exec("npm run build");
 
-const version = require("../package.json").version;
+  exec(`npm version ${type}`);
 
-console.log("tag version is", `v${version}`);
+  console.log("3. publishing...");
 
-exec(`git push origin v${version}`);
+  exec("npm publish");
+
+  if (isGitTag) {
+    const version = require("../package.json").version;
+
+    console.log("tag version is", `v${version}`);
+
+    exec(`git push origin v${version}`);
+    
+    console.log('Finish git tag create and publish')
+  }
+});
