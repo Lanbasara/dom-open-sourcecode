@@ -15,14 +15,13 @@
   "author": "Eric Guo <ghkagg@outlook.com>",
   "license": "MIT",
   "dependencies": {
-    "@vue/compiler-sfc": "^3.2.45",
-    "loader-utils": "^2.0.0"
+    "@vue/compiler-sfc": "^3.2.45"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@types/node": "^18.11.9",
-    "chalk": "^5.1.2",
+    "chalk": "4.1.0",
     "inquirer": "8.0.0",
     "install": "^0.13.0",
     "nstall": "^0.2.0",

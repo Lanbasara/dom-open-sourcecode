@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const chalk = require("chalk");
 const { exec } = require("shelljs");
 
 const PUBLISH_TYPE = [
@@ -30,26 +31,25 @@ inquirer.prompt(questions).then((ans) => {
 
   const isGitTag = ans["git_tag"];
 
-  console.log("1. start publish new version");
+  console.log(console.log(chalk.blue("1. start publish new version")));
 
-  console.log("2. compiling....");
+  console.log(chalk.blue("2. compiling...."));
 
   exec("npm run build");
 
   exec(`npm version ${type}`);
 
-  console.log("3. publishing...");
+  console.log(chalk.blue("3. publishing..."));
 
   exec("npm publish");
 
   if (isGitTag) {
     const version = require("../package.json").version;
 
-    console.log("tag version is", `v${version}`);
+    console.log(chalk.blue("Start create git tag, version is", `v${version}`));
 
-    
     exec(`git push origin v${version}`);
-    
-    console.log('Finish git tag create and publish')
+
+    console.log(chalk.blue("Finish git tag create and publish"));
   }
 });
