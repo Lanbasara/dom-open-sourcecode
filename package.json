@@ -1,11 +1,15 @@
 {
   "name": "dom-open-sourcecode",
-  "version": "0.7.1-bata",
+  "version": "0.7.2",
   "description": "A handy tool that helps developers quickly find source code from the DOM and evoke the IDE",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "update:version": "node ./scripts/publish"
+    "update:major": "node ./scripts/publish --major",
+    "update:minor": "node ./scripts/publish --minor",
+    "update:patch": "node ./scripts/publish --patch",
+    "update:premajor": "node ./scripts/publish --premajor",
+    "update:preminor": "node ./scripts/publish --preminor"
   },
   "keywords": [
     "Vue",
