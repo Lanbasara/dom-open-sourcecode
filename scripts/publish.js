@@ -10,6 +10,7 @@ exec("npm run build");
 
 exec(`npm version ${versionTitle}`);
 
-console.log("3. publishing...");
 
-exec("npm publish");
+// console.log("3. publishing...");
+
+// exec("npm publish");
