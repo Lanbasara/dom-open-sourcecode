@@ -10,6 +10,7 @@ exec("npm run build");
 
 exec(`npm version ${versionTitle}`);
 
+const version = require('../package.json').version
 
 // console.log("3. publishing...");
 
