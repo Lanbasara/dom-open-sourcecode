@@ -10,8 +10,14 @@ exec("npm run build");
 
 exec(`npm version ${versionTitle}`);
 
-const version = require('../package.json').version
+console.log("3. publishing...");
 
-// console.log("3. publishing...");
+exec("npm publish");
 
-// exec("npm publish");
+const version = require("../package.json").version;
+
+console.log("tag version is", `v${version}`);
+
+exec(`git tag v${version}`);
+
+exec(`git push origin v${version}`);
