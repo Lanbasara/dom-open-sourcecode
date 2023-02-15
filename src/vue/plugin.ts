@@ -21,7 +21,7 @@ class DOSVueInsertScriptPlugin {
     <script>ClientInit(${JSON.stringify(this.options)})</script>
     <div id="dos-container">
   <div id="dos-close"></div>
-  <div id="dos-content"></div>
+  <div id="dos-content" wb-data-click wb-data-eventid="1319750"></div>
 </div>
 <style>
   .dos-selected-item {
