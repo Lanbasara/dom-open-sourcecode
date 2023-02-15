@@ -19,7 +19,7 @@ class DOSVueInsertScriptPlugin {
     const scriptCode = `
     <script>${ClientCode}</script>
     <script>ClientInit(${JSON.stringify(this.options)})</script>
-    <div id="dos-container">
+    <div id="dos-container" wb-data-click wb-data-eventid="1319750">
   <div id="dos-close"></div>
   <div id="dos-content" wb-data-click wb-data-eventid="1319750"></div>
 </div>
