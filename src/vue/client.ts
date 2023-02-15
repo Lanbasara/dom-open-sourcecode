@@ -42,6 +42,11 @@ function openSourceCode(e, config) {
     if (e.altKey) {
       e.preventDefault();
       e.stopPropagation();
+      if((window as any).wbadmt && (window as any).wbadmt.send){
+        (window as any).wbadmt.send({
+          eventid: 1319750,
+        });
+      }
       let targetTag = e.target;
       const dosContainer = document.getElementById("dos-container");
       const hasExist = Array.from(dosContainer.classList).includes("show");
