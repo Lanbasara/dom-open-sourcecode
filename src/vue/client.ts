@@ -16,15 +16,12 @@ function createLinkForElement(nodeList, urlPath) {
     li.style.margin = "8px";
     li.innerHTML = `<span style='cursor: pointer;text-decoration: underline;color: #0000ff;'>${nodeList[i].filePath}</span>`;
     li.addEventListener("mouseenter", () => {
-      // console.log('nodeList[i] is',nodeList[i])
       nodeList[i].node.classList.add("dos-selected-item");
     });
     li.addEventListener("mouseleave", () => {
-      // console.log('nodeList[i] is',nodeList[i])
       nodeList[i].node.classList.remove("dos-selected-item");
     });
     li.addEventListener("click", () => {
-      // console.log('nodeList[i] is',nodeList[i])
       launchEditor(nodeList[i].filePath, {
         urlPath,
       });
@@ -37,7 +34,6 @@ function createLinkForElement(nodeList, urlPath) {
 
 function openSourceCode(e, config) {
   try {
-    console.log("openSourceCode called e is", e);
     const { domAttribute, urlPath } = config;
     if (e.altKey) {
       e.preventDefault();
@@ -86,11 +82,9 @@ function findAllParentElement(node, domAttribute) {
 function ClientInit(config: { domAttribute?: string; urlPath?: string }) {
   const { domAttribute = "data-source-code-location", urlPath = "/code" } =
     config;
-  console.log("ClientInit clicked", "config is", config);
   document.addEventListener(
     "click",
     (e) => {
-      console.log("document click");
       openSourceCode(e, {
         domAttribute,
         urlPath,
@@ -100,4 +94,3 @@ function ClientInit(config: { domAttribute?: string; urlPath?: string }) {
   );
 }
 
-console.log("This is client");
